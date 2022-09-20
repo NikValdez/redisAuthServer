@@ -79,7 +79,7 @@ app.post("/register", (req, res) => {
       }
       console.log(reply)
       res.status(200).json({ message: "User created successfully" })
-      re.redirect("/home")
+      res.redirect("/home")
     })
   } catch (err) {
     console.log(err)
@@ -106,6 +106,7 @@ app.post("/login", (req, res) => {
         if (result) {
           req.session.user = username
           res.status(200).json({ message: "Login successful" })
+          res.redirect("/home")
         } else {
           res.status(401).json({ message: "Password is incorrect" })
         }
